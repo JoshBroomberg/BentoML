@@ -47,16 +47,16 @@ with the name ``"model"``, so the user code can get access to the model via
 :code:`self.artifacts.model`.
 
 The BentoService instance is now ready to be used for
-inference. But more importantly, BentoML solves the problem of saving the entire
-BentoService to disk, distribute the saved file, and reproduce the exact same prediction
-service in testing and production environment.
+inference. But more importantly, BentoML solves the problem of reproducing the exact same prediction
+service in testing and production environment. It does this by providing a mechanism to save the entire
+BentoService to disk, producing a self-contained bundle that can be distributed/shared as a regular folder.
 
 To save the BentoService instance, simply call the
 :ref:`BentoService#save <bentoml-bentoservice-save-label>` method. In this process, 
 BentoML will:
 
-#. Saves the model based on the ML training framework and artifact type used
-#. Automatically extracts all the pip dependencies required by your BentoService class and put into a `requirements.txt` file
+#. Save the model based on the ML training framework and artifact type used
+#. Automatically extract all the pip dependencies required by your BentoService class and create a version-locked `requirements.txt` file
 #. Saves all the local python code dependencies
 #. Put all the generated files into one file directory, which, by default, is a location managed by BentoML
 
